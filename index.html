@@ -11,6 +11,7 @@
 <body>
 
     <h1>The Standard Deck Fortune Teller</h1>
+    <h2>Click each card for Reading</h2>
 
     <!--Cards drawn-->
     
@@ -26,21 +27,10 @@
             <p id="valueThree" style="display:none"></p>
     </div>
 
-
-    <!--Buttons to select which card to read-->
-
-    <div class="buttons">
-
-        <button id="readingPast" class="btn">Press For Past Reading</button>
-
-        <button id="readingPresent" class="btn">Press For Present Reading</button>
-
-        <button id="readingFuture" class="btn">Press For Future Reading</button>
-    </div>
-
     <!--Current Reading-->
 
     <div class="reading">
+        <h2 id="tense"></h2>
         <p id="fortune">Keywords</p>
         <p id="special">Special Characters</p>
         <p id="numbers">Numbers Meaning</p>
@@ -130,7 +120,7 @@ const special = (value) => {
     } else if (val == 'JACK'){
         document.getElementById('special').innerHTML = Jacks;
     } else {
-        document.getElementById('special').innerHTML = 'This card has no special character'
+        document.getElementById('special').innerHTML = ''
     }
 };
 
@@ -164,26 +154,32 @@ const numbers = (number) => {
         case '9':
             document.getElementById('numbers').innerHTML = Nine;
             break;
+        case '10':
+            document.getElementById('numbers').innerHTML = Ten;
+            break;
         default:
-            document.getElementById('numbers').innerHTML = 'This is not a number Card'
+            document.getElementById('numbers').innerHTML = ''
 
     }
 
 }
 
-document.getElementById('readingPast').addEventListener('click', function() {
+document.getElementById('cardOne').addEventListener('click', function() {
+    document.getElementById('tense').innerHTML = "Past";
     reading('deckOne');
     special('valueOne');
     numbers('valueOne');
 });
 
-document.getElementById('readingPresent').addEventListener('click', function() {
+document.getElementById('cardThree').addEventListener('click', function() {
+    document.getElementById('tense').innerHTML = "Present";
     reading('deckThree');
     special('valueThree');
     numbers('valueThree');
 });
 
-document.getElementById('readingFuture').addEventListener('click', function() {
+document.getElementById('cardTwo').addEventListener('click', function() {
+    document.getElementById('tense').innerHTML = "Future";
     reading('deckTwo');
     special('valueTwo');
     numbers('valueTwo');
